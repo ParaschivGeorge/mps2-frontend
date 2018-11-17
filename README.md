@@ -2,6 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
 
+## Firebase deploy
+
+This project is deployed with [Firebase](https://mps2-frontend.firebaseapp.com)
+
+## Travis-CI
+
+This project has CI with [Travis](https://travis-ci.org/ParaschivGeorge/mps2-frontend). Please run `ng build --prod --configuration=production` before pushing/merging to master.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
