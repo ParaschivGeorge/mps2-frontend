@@ -10,12 +10,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpModule } from '@angular/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { SafeUrlPipe } from './utils/safe-url.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    SafeUrlPipe
   ],
   imports: [
     BrowserModule,
