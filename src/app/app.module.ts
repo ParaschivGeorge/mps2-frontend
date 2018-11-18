@@ -11,13 +11,16 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpModule } from '@angular/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SafeUrlPipe } from './utils/safe-url.pipe';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ErrorPageComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { SafeUrlPipe } from './utils/safe-url.pipe';
     DragDropModule,
     HttpClientModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
