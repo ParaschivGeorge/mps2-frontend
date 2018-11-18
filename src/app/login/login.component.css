@@ -1,0 +1,10 @@
+.full-width {
+    width: 100%;
+}
+
+.login-form {
+    min-width: 150px;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10vh 10vh 10vh 10vh;
+}
