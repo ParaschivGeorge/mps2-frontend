@@ -1,0 +1,16 @@
+div.container {
+    margin: 5vw 5vw 10vw 5vw;
+    word-break: break-all !important;
+    overflow: hidden;
+    width: 100hv;
+}
+
+::ng-deep .mat-checkbox-layout {
+    white-space: normal !important;
+    word-break: break-word !important;
+    padding-bottom: 10px;
+}
+
+.form-div {
+    text-align: left;
+}
