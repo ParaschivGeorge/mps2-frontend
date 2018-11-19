@@ -1,0 +1,10 @@
+<div class="container">
+  <form [formGroup]="donorForm" (ngSubmit)="onSubmit()" *ngIf="donorForm">
+    <div formArrayName="questions" class="form-div">
+      <p *ngFor="let question of questions; let i = index">
+        <mat-checkbox [formControlName]="i">{{question}}</mat-checkbox>     
+      </p>
+    </div>
+    <button mat-raised-button>Submit</button>
+  </form>
+</div>

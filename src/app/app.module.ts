@@ -14,6 +14,7 @@ import { SafeUrlPipe } from './utils/safe-url.pipe';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RegisterComponent } from './register/register.component';
+import { DonorFormComponent } from './donor-form/donor-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RegisterComponent } from './register/register.component';
     ErrorPageComponent,
     SafeUrlPipe,
     NavBarComponent,
-    RegisterComponent
+    RegisterComponent,
+    DonorFormComponent
   ],
   imports: [
     BrowserModule,
