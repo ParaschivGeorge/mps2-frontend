@@ -4,12 +4,14 @@ import { LoginComponent } from '../login/login.component';
 import { ErrorPageComponent } from '../error-page/error-page.component';
 import { RegisterComponent } from '../register/register.component';
 import { DonorFormComponent } from '../donor-form/donor-form.component';
+import { DonorProfileComponent } from '../donor-profile/donor-profile.component';
 
 const app_Routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'donor-form', component: DonorFormComponent},
+  { path: 'donor-profile', component: DonorProfileComponent},
   { path: 'not-found', component: ErrorPageComponent},
   { path: '**', redirectTo: 'not-found' } // this should always be the last route!
   /* { path: '', redirectTo: '/somewhere-else', pathMatch: 'full' }
