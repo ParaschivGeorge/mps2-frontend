@@ -16,6 +16,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RegisterComponent } from './register/register.component';
 import { DonorFormComponent } from './donor-form/donor-form.component';
 import { DonorProfileComponent } from './donor-profile/donor-profile.component';
+import { DonationRequestComponent } from './donation-request/donation-request.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { DonorProfileComponent } from './donor-profile/donor-profile.component';
     NavBarComponent,
     RegisterComponent,
     DonorFormComponent,
-    DonorProfileComponent
+    DonorProfileComponent,
+    DonationRequestComponent
   ],
   imports: [
     BrowserModule,

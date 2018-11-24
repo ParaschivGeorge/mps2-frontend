@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <form class="donation-form" [formGroup]="donationForm" (ngSubmit)="onSubmit()" *ngIf="donationForm">
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Patient name" formControlName="patient-name"
+        [errorStateMatcher]="matcher" type="text">
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Blood group" formControlName="blood-group">
+        <mat-option *ngFor="let bloodGroup of bloodGroups" [value]="bloodGroup">
+          {{bloodGroup}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Rh" formControlName="rh">
+        <mat-option *ngFor="let rh of rhs" [value]="rh">
+          {{rh}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Quantity" formControlName="quantity"
+        [errorStateMatcher]="matcher" type="number" min="1">
+    </mat-form-field>
+    <button mat-raised-button type="submit">Request blood</button>
+  </form>
+</div>
