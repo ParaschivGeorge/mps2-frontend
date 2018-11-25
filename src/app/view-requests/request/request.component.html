@@ -1,0 +1,23 @@
+<mat-card class="card">
+  <mat-card-header>
+    <div mat-card-avatar class="header-image"></div>
+    <mat-card-title>{{request.name}}</mat-card-title>
+    <mat-card-subtitle>{{request.center}}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-progress-bar mode="determinate" value="{{request.quantity / request.totalQuantity * 100}}"></mat-progress-bar>
+          </mat-panel-title>
+          <mat-panel-description>{{request.quantity}}/{{request.totalQuantity}} l</mat-panel-description>          
+        </mat-expansion-panel-header>
+        <p class="align-left">Blood group: {{request.bloodGroup}}</p>
+        <p class="align-left">Rh: {{request.rh}}</p>
+        <p class="align-left">Status: {{request.status}}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <button mat-raised-button (click)="donate()" *ngIf="viewAs === 'donor'" class="donate-button" color="primary">Donate</button>
+  </mat-card-content>
+</mat-card>
