@@ -17,6 +17,8 @@ import { RegisterComponent } from './register/register.component';
 import { DonorFormComponent } from './donor-form/donor-form.component';
 import { DonorProfileComponent } from './donor-profile/donor-profile.component';
 import { DonationRequestComponent } from './donation-request/donation-request.component';
+import { ViewRequestsComponent } from './view-requests/view-requests.component';
+import { RequestComponent } from './view-requests/request/request.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { DonationRequestComponent } from './donation-request/donation-request.co
     RegisterComponent,
     DonorFormComponent,
     DonorProfileComponent,
-    DonationRequestComponent
+    DonationRequestComponent,
+    ViewRequestsComponent,
+    RequestComponent
   ],
   imports: [
     BrowserModule,
