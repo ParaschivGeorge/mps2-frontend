@@ -7,6 +7,7 @@ import { DonorFormComponent } from '../donor-form/donor-form.component';
 import { DonorProfileComponent } from '../donor-profile/donor-profile.component';
 import { DonationRequestComponent } from '../donation-request/donation-request.component';
 import { ViewRequestsComponent } from '../view-requests/view-requests.component';
+import { AdminComponent } from '../admin/admin.component';
 
 const app_Routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -16,6 +17,7 @@ const app_Routes: Routes = [
   { path: 'donor-profile', component: DonorProfileComponent},
   { path: 'donation-request', component: DonationRequestComponent},
   { path: 'requests', component: ViewRequestsComponent},
+  { path: 'admin', component: AdminComponent},
   { path: 'not-found', component: ErrorPageComponent},
   { path: '**', redirectTo: 'not-found' } // this should always be the last route!
   /* { path: '', redirectTo: '/somewhere-else', pathMatch: 'full' }

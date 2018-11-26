@@ -1,0 +1,16 @@
+mat-list {
+    padding: 5vh 5vw 0 5vw;
+}
+
+p {
+    padding: 5vh 5vw;
+    width: 50vw;
+}
+
+mat-form-field {
+    max-width: 30vw;
+}
+
+mat-list-item {
+    margin-bottom: 3vh;
+}

@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { MaterialModule } from './material/material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { HttpModule } from '@angular/http';
@@ -19,6 +19,7 @@ import { DonorProfileComponent } from './donor-profile/donor-profile.component';
 import { DonationRequestComponent } from './donation-request/donation-request.component';
 import { ViewRequestsComponent } from './view-requests/view-requests.component';
 import { RequestComponent } from './view-requests/request/request.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { RequestComponent } from './view-requests/request/request.component';
     DonorProfileComponent,
     DonationRequestComponent,
     ViewRequestsComponent,
-    RequestComponent
+    RequestComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { RequestComponent } from './view-requests/request/request.component';
     HttpClientModule,
     HttpModule,
     AppRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
