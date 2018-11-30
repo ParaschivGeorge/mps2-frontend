@@ -28,6 +28,7 @@ export class DonorDataComponent implements OnInit {
     Validators.pattern('[0-1].[0-9]')
   ]);
   filteredDonors: Observable<User[]>;
+  matcher = new MyErrorStateMatcher();
 
   constructor(
     private _viewRequestHelperService: ViewRequestHelperService,
