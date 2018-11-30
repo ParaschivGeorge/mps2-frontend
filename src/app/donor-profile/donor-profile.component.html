@@ -5,7 +5,9 @@
     <mat-card-subtitle>Donor</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <p class="align-left">Next donation date: now!</p>
+    <p class="align-left">Next donation date: 06.03.2018</p>
+    <p class="align-left">You donated for: Gica Dorel</p>
+    <p class="align-left">Status: Processing</p>
     <p class="align-left">Blood works:</p>
     <div *ngFor="let pdf of pdfs">
       <iframe  [src]="pdf | safeUrl" frameborder="0" height="500px" width="700px" fxHide.lt-md="true"></iframe>

@@ -39,3 +39,16 @@ iframe {
 .donate-button {
     margin-top: 5px;
 }
+
+p.donor-list {
+    padding: 5vh 3px;
+    width: 50vw;
+}
+
+mat-form-field {
+    max-width: 30vw;
+}
+
+mat-list-item {
+    margin-bottom: 3vh;
+}

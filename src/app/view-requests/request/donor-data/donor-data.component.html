@@ -1,0 +1,22 @@
+<form class="form">
+    <mat-form-field class="full-width" >
+      <input type="text" placeholder="Donor" aria-label="Number" matInput [formControl]="donorForm" [matAutocomplete]="auto" [errorStateMatcher]="matcher">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let user of filteredDonors | async" [value]="user.email">
+          {{user.lastName}} {{user.firstname}} {{user.email}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <input matInput placeholder="Quantity" [formControl]="quantityForm"
+        [errorStateMatcher]="matcher">
+    </mat-form-field>
+    <div class="button-row">
+      <p>Add blood work</p>
+      <button mat-button color="accent" mat-mini-fab (click)="imgFileInput.click()">
+        <mat-icon>attachment</mat-icon>
+      </button>
+      <input hidden type="file" #imgFileInput (change)="previewImage($event)"/>
+    </div>
+    <button mat-raised-button (click)="onSubmit()" color="primary">Add donation</button>
+  </form>

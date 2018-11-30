@@ -42,7 +42,7 @@ export class DonationRequestComponent implements OnInit {
 
   quantityValidator(control: FormControl): {[s: string]: boolean} {
     if (!isNaN(control.value) && (parseInt(control.value) > 0)) {return null; }
-    return {'passwordsNotMatching': true};
+    return {'wrongQuantity': true};
   }
 
   onSubmit() {

@@ -46,5 +46,5 @@ padding: 0 14px;
 .content {
     background-image: url("../../background.jpg");
     min-height: 100vh;
-    background-repeat: no-repeat;   
+    background-repeat: repeat;   
 }

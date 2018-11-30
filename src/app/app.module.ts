@@ -20,6 +20,7 @@ import { DonationRequestComponent } from './donation-request/donation-request.co
 import { ViewRequestsComponent } from './view-requests/view-requests.component';
 import { RequestComponent } from './view-requests/request/request.component';
 import { AdminComponent } from './admin/admin.component';
+import { DonorDataComponent } from './view-requests/request/donor-data/donor-data.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,11 @@ import { AdminComponent } from './admin/admin.component';
     DonationRequestComponent,
     ViewRequestsComponent,
     RequestComponent,
-    AdminComponent
+    AdminComponent,
+    DonorDataComponent
+  ],
+  entryComponents: [
+    DonorDataComponent
   ],
   imports: [
     BrowserModule,

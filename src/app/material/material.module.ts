@@ -30,10 +30,12 @@ import {
   MatSnackBarModule,
   MatTableModule,
   MatSortModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatBottomSheetModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DonorDataComponent } from '../view-requests/request/donor-data/donor-data.component';
 
 @NgModule({
   imports: [
@@ -69,7 +71,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatBottomSheetModule
   ],
   exports: [
     BrowserModule,
@@ -104,7 +107,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatBottomSheetModule
   ]
 })
 export class MaterialModule { }
