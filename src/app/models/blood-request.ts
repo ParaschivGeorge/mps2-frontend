@@ -1,3 +1,5 @@
+import { Donor } from './donor';
+
 export interface BloodRequest {
     id: number;
     status: string;
@@ -7,4 +9,5 @@ export interface BloodRequest {
     totalQuantity: number;
     name: string;
     center: string;
+    donors: Donor[];
 }

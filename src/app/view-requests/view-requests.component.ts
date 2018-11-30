@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BloodRequest } from '../models/blood-request';
+import { ViewRequestHelperService } from '../services/view-request-helper.service';
 
 @Component({
   selector: 'app-view-requests',
@@ -8,28 +9,7 @@ import { BloodRequest } from '../models/blood-request';
 })
 export class ViewRequestsComponent implements OnInit {
 
-  viewAs = 'donor'; // 'doctor', 'employee'
-  requests: BloodRequest[] = [{
-    id: 1,
-    status: 'Donation', // 'Processing', 'Testing', 'Distribution'
-    bloodGroup: 'A',
-    rh: 'positive', // 'negative'
-    quantity: 2,
-    totalQuantity: 10,
-    name: 'Vasile Emil',
-    center: 'Blood Donation Center Bucharest'
-  }, {
-    id: 1,
-    status: 'Processing',
-    bloodGroup: 'B',
-    rh: 'negative',
-    quantity: 8,
-    totalQuantity: 8,
-    name: 'Megleu Jiji',
-    center: 'Blood Donation Center Bucharest'
-  }];
-
-  constructor() { }
+  constructor(private _viewRequestHelperService: ViewRequestHelperService) { }
 
   ngOnInit() {
   }
@@ -44,5 +24,13 @@ export class ViewRequestsComponent implements OnInit {
     if (this.viewAs === 'donor') {
       return 'Donate for:';
     }
+  }
+
+  get viewAs(): string {
+    return this._viewRequestHelperService.viewAs;
+  }
+
+  get requests(): BloodRequest[] {
+    return  this._viewRequestHelperService.requests;
   }
 }
