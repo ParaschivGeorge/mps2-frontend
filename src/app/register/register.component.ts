@@ -18,6 +18,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   matcher = new MyErrorStateMatcher();
+  roles = ['donor', 'doctor', 'employee'];
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email
@@ -50,7 +51,8 @@ export class RegisterComponent implements OnInit {
       'first-name': this.firstNameFormControl,
       'last-name': this.lastNameFormControl,
       'password': this.passwordFormControl,
-      'confirm-password': this.passwordConfirmFormControl
+      'confirm-password': this.passwordConfirmFormControl,
+      'role': new FormControl('donor')
     });
   }
 

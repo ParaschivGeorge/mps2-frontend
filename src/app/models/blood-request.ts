@@ -1,13 +1,15 @@
-import { Donor } from './donor';
+import { TransfusionCenter } from './transfusion-center';
+import { Doctor } from './doctor';
+import { Donation } from './donation';
 
 export interface BloodRequest {
     id: number;
     status: string;
-    bloodGroup: string;
+    bloodType: string;
     rh: string;
     quantity: number;
-    totalQuantity: number;
-    name: string;
-    center: string;
-    donors: Donor[];
+    receivingPerson: string;
+    center: TransfusionCenter;
+    doctor: Doctor;
+    donations: Donation[];
 }
