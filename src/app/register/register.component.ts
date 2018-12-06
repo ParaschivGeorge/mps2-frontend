@@ -19,6 +19,11 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   matcher = new MyErrorStateMatcher();
   roles = ['donor', 'doctor', 'employee'];
+  rhs = ['positive', 'negative'];
+  bloodTypes = ['0', 'A', 'B', 'AB'];
+  hospitals = [];
+  transfusionCenters = [];
+
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email
@@ -46,13 +51,18 @@ export class RegisterComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
     this.registerForm = new FormGroup({
       'email': this.emailFormControl,
       'first-name': this.firstNameFormControl,
       'last-name': this.lastNameFormControl,
       'password': this.passwordFormControl,
       'confirm-password': this.passwordConfirmFormControl,
-      'role': new FormControl('donor')
+      'role': new FormControl('donor'),
+      'rh': new FormControl('positive'),
+      'bloodType': new FormControl('0'),
+      'transfusionCenter': new FormControl(''),
+      'hospital': new FormControl('')
     });
   }
 
