@@ -42,4 +42,11 @@ export class UserService {
 
     return this._http.request('post', environment.apiUrl + '/register`', {params : queryParam});
   }
+
+  updateStatus(email: string, isActive: boolean): Observable<any> {
+    let queryParam = new HttpParams().set('email', email);
+    queryParam = queryParam.append('isActive', isActive.toString());
+
+    return this._http.request('put', environment.apiUrl + '/updateStatus', {params : queryParam});
+  }
 }
