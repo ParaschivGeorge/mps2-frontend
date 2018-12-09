@@ -40,6 +40,6 @@ export class RequestComponent implements OnInit {
   }
 
   deleteDonation(donor: Donor) {
-    this.request.donors = this.request.donors.filter(donor1 => donor1 !== donor);
+    // this.request.donors = this.request.donors.filter(donor1 => donor1 !== donor);
   }
 }

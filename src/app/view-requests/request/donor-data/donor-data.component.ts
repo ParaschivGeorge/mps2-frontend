@@ -49,7 +49,7 @@ export class DonorDataComponent implements OnInit {
   private _filter(value: string): User[] {
     const filterValue = value.toLowerCase();
 
-    return this.users.filter(user => user.lastName.toLowerCase().indexOf(filterValue) === 0);
+    return this.users.filter(user => user.surname.toLowerCase().indexOf(filterValue) === 0);
   }
 
   donorValidator(control: FormControl): {[s: string]: boolean} {
@@ -64,15 +64,15 @@ export class DonorDataComponent implements OnInit {
   onSubmit() {
     if (this.donorForm.valid && this.quantityForm.valid) {
       const donor: User = this.users.filter(user => user.email === this.donorForm.value)[0];
-      this._viewRequestHelperService.requests[this._viewRequestHelperService.index].donors.push(
-        {
-          email: donor.email,
-          firstname: donor.firstname,
-          lastName: donor.lastName,
-          quantity: this.quantityForm.value,
-          bloodWork: '../../assets/blood_work.pdf'
-        }
-      );
+      // this._viewRequestHelperService.requests[this._viewRequestHelperService.index].donors.push(
+      //   {
+      //     email: donor.email,
+      //     firstname: donor.firstname,
+      //     lastName: donor.lastName,
+      //     quantity: this.quantityForm.value,
+      //     bloodWork: '../../assets/blood_work.pdf'
+      //   }
+      // );
       this.bottomSheetRef.dismiss();
     }
   }

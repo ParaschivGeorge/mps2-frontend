@@ -2,7 +2,7 @@
   <h3 mat-subheader>Users</h3>
   <mat-list-item *ngFor="let user of users; last as last">
     <mat-icon mat-list-icon>face</mat-icon>
-    <p>{{user.lastName}} {{user.firstname}}</p>
+    <p>{{user.surname}} {{user.name}}</p>
     <p fxHide.lt-md="true">{{user.email}}</p>
     <mat-form-field>
       <mat-select placeholder="Role" [(ngModel)]="user.role" name="role">

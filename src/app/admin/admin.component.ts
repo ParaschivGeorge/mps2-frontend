@@ -9,14 +9,16 @@ import { User } from '../models/user';
 export class AdminComponent implements OnInit {
 
   users: User[] = [{
+    id: 1,
     email: 'vasile.emil@email.com',
-    firstname: 'Emil',
-    lastName: 'Vasile',
+    name: 'Emil',
+    surname: 'Vasile',
     role: 'donor'
   }, {
+    id: 2,
     email: 'mecleu.jica@email.com',
-    firstname: 'Jica',
-    lastName: 'Mecleu',
+    name: 'Jica',
+    surname: 'Mecleu',
     role: 'doctor'
   }];
 
