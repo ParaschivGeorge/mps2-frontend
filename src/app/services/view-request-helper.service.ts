@@ -29,7 +29,7 @@ export class ViewRequestHelperService {
     rh: 'positive', // 'negative'
     quantity: 10,
     receivingPerson: 'Vasile Emil',
-    center: {id: 1, name: 'Blood Donation Center Bucharest', employees: [], requests: []},
+    center: {id_center: 1, name: 'Blood Donation Center Bucharest', employees: [], requests: []},
     donations: [],
     doctor: null
   },
@@ -40,7 +40,7 @@ export class ViewRequestHelperService {
     rh: 'positive', // 'negative'
     quantity: 10,
     receivingPerson: 'Vasile Emil',
-    center: {id: 1, name: 'Blood Donation Center Bucharest', employees: [], requests: []},
+    center: {id_center: 1, name: 'Blood Donation Center Bucharest', employees: [], requests: []},
     donations: [],
     doctor: null
   }];

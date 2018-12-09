@@ -12,7 +12,7 @@ export class HospitalService {
   constructor(private _http: HttpClient) { }
 
   getHospitals(): Observable<Hospital[]> {
-    // return this._http.get<Hospital[]>(environment.apiUrl + '/hospital');
-    return  of([{id: 1, name: 'Floreasca Hospital', doctors: []}, {id: 2, name: 'Colțea Hospital', doctors: []}]);
+    return this._http.get<Hospital[]>(environment.apiUrl + '/hospital');
+    // return  of([{id_hospital: 1, name: 'Floreasca Hospital', doctors: []}, {id_hospital: 2, name: 'Colțea Hospital', doctors: []}]);
   }
 }

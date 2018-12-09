@@ -1,7 +1,7 @@
 import { Doctor } from './doctor';
 
 export interface Hospital {
-    id: number;
+    id_hospital: number;
     name: string;
     doctors: Doctor[];
 }

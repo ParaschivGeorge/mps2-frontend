@@ -20,12 +20,12 @@ export class UserService {
   register(email: string, password: string, passwordConfirm: string, role: string,
     name: string, surname: string, bloodType: string, rh: string, hospitalId: number,
     transfusionCenterId: number): Observable<any> {
-    let queryParam = new HttpParams().set('email', email);
-    queryParam = queryParam.append('password', password);
-    queryParam = queryParam.append('passwordConfirm', passwordConfirm);
-    queryParam = queryParam.append('role', role);
-    queryParam = queryParam.append('name', name);
-    queryParam = queryParam.append('surname', surname);
+    let queryParam = new HttpParams().set('email', encodeURIComponent(email));
+    queryParam = queryParam.append('password', encodeURIComponent(password));
+    queryParam = queryParam.append('passwordConfirm', encodeURIComponent(passwordConfirm));
+    queryParam = queryParam.append('role', encodeURIComponent(role.toLocaleUpperCase()));
+    queryParam = queryParam.append('name', encodeURIComponent(name));
+    queryParam = queryParam.append('surname', encodeURIComponent(surname));
 
     if (bloodType) {
       queryParam = queryParam.append('bloodType', bloodType);
@@ -40,7 +40,7 @@ export class UserService {
       queryParam = queryParam.append('transfusionCenterId', transfusionCenterId.toString());
     }
 
-    return this._http.request('post', environment.apiUrl + '/register`', {params : queryParam});
+    return this._http.request('post', environment.apiUrl + '/register', {params : queryParam});
   }
 
   updateStatus(email: string, isActive: boolean): Observable<any> {
