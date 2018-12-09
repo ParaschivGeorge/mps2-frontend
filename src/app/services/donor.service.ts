@@ -19,7 +19,11 @@ export class DonorService {
     if (rh) {
       queryParam = queryParam.append('rh', rh);
     }
+
     return this._http.get<Donor[]>(environment.apiUrl + '/donor', {params : queryParam});
-    return  of([{id: 1, name: 'Floreasca Hospital', doctors: []}, {id: 2, name: 'Colțea Hospital', doctors: []}]);
+  }
+
+  getDonor(donorId: number): Observable<Donor> {
+    return this._http.get<Donor>(environment.apiUrl + '/donor/' + donorId);
   }
 }
