@@ -20,6 +20,41 @@
       <input matInput placeholder="Confirm Password" formControlName="confirm-password" type="password"
         [errorStateMatcher]="matcher">
     </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Role" formControlName="role" name="role">
+        <mat-option *ngFor="let role of roles" [value]="role">
+          {{role.toUpperCase()}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width" *ngIf="registerForm.get('role').value === 'donor'">
+      <mat-select placeholder="Blood type" formControlName="bloodType" name="bloodType">
+        <mat-option *ngFor="let bloodType of bloodTypes" [value]="bloodType">
+          {{bloodType}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width" *ngIf="registerForm.get('role').value === 'donor'">
+      <mat-select placeholder="Rh" formControlName="rh" name="rh">
+        <mat-option *ngFor="let rh of rhs" [value]="rh">
+          {{rh}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width" *ngIf="registerForm.get('role').value === 'doctor'">
+      <mat-select placeholder="Hospital" formControlName="hospital" name="hospital">
+        <mat-option *ngFor="let hospital of hospitals" [value]="hospital">
+          {{hospital.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width" *ngIf="registerForm.get('role').value === 'employee'">
+      <mat-select placeholder="Transfusion Center" formControlName="transfusionCenter" name="transfusionCenter">
+        <mat-option *ngFor="let transfusionCenter of transfusionCenters" [value]="transfusionCenter">
+          {{transfusionCenter.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <button mat-raised-button type="submit">Register</button>
   </form>
 </div>

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { UserService } from '../services/user.service';
+import * as jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
+import { User } from '../models/user';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -28,14 +32,32 @@ export class LoginComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  constructor() { }
+  constructor(private _userService: UserService, private _router: Router) { }
 
   ngOnInit() {
     this.loginForm = new FormGroup({'email': this.emailFormControl, 'password': this.passwordFormControl});
   }
 
   onSubmit() {
-
+    if (this.loginForm.valid) {
+      this._userService.login(
+        this.loginForm.get('email').value,
+        this.loginForm.get('password').value
+      ).subscribe(
+        data => {
+          localStorage.setItem('token', data['token']);
+          console.log(jwt_decode(localStorage.getItem('token')));
+          const user: User = jwt_decode(localStorage.getItem('token'))['user'];
+          if (user.role.toLowerCase() === 'donor') {
+            this._router.navigate(['donor-profile']);
+          } else if (user.role.toLowerCase() === 'admin') {
+            this._router.navigate(['admin']);
+          } else {
+            this._router.navigate(['requests']);
+          }
+        }
+      );
+    }
   }
 
 }

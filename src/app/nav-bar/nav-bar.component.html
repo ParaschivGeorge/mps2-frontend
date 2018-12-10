@@ -6,33 +6,32 @@
       </button>
     </div>
       
-    <span class="welcome">Hello, {{getUsername()}}!</span>
+    <span class="welcome" *ngIf="isAuthenticated()">Hello, {{getUsername()}}!</span>
     <span class="fill-remaining-space"></span>
-    <button mat-raised-button fxHide.gt-sm="true">Logout</button> 
+    <button mat-raised-button fxHide.gt-sm="true" *ngIf="isAuthenticated()" (click)="logout()">Logout</button> 
     
     <div fxShow="true" fxHide.lt-md="true">
-      <a mat-button routerLink="/login">Login</a>
-      <a mat-button routerLink="/register">Register</a>
-      <a mat-button routerLink="/donor-form">Donor Form</a>
-      <a mat-button routerLink="/donor-profile">Profile</a>
-      <a mat-button routerLink="/donation-request">Request</a>
-      <a mat-button routerLink="/requests">Requests</a>
-      <a mat-button routerLink="/admin">Admin</a>
-      <button mat-raised-button>Logout</button>
+      <a mat-button routerLink="/login" *ngIf="!isAuthenticated()">Login</a>
+      <a mat-button routerLink="/register" *ngIf="!isAuthenticated()">Register</a>
+      <a mat-button routerLink="/donor-form" *ngIf="isDonor()">Donor Form</a>
+      <a mat-button routerLink="/donor-profile" *ngIf="isDonor()">Profile</a>
+      <a mat-button routerLink="/donation-request" *ngIf="isDoctor()">Request</a>
+      <a mat-button routerLink="/requests" *ngIf="isDoctor() || isEmployee()">Requests</a>
+      <a mat-button routerLink="/admin" *ngIf="isAdmin()">Admin</a>
+      <button mat-raised-button *ngIf="isAuthenticated()" (click)="logout()">Logout</button>
     </div>
 
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill class="example-container content">
-
     <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
       <div fxLayout="column">
-        <a mat-button routerLink="/login">Login</a>
-        <a mat-button routerLink="/register">Register</a>
-        <a mat-button routerLink="/donor-form">Donor Form</a>
-        <a mat-button routerLink="/donor-profile">Profile</a>
-        <a mat-button routerLink="/donation-request">Request</a>
-        <a mat-button routerLink="/requests">Requests</a>
-        <a mat-button routerLink="/admin">Admin</a>
+        <a mat-button routerLink="/login" *ngIf="!isAuthenticated()">Login</a>
+        <a mat-button routerLink="/register" *ngIf="!isAuthenticated()">Register</a>
+        <a mat-button routerLink="/donor-form" *ngIf="isDonor()">Donor Form</a>
+        <a mat-button routerLink="/donor-profile" *ngIf="isDonor()">Profile</a>
+        <a mat-button routerLink="/donation-request" *ngIf="isDoctor()">Request</a>
+        <a mat-button routerLink="/requests" *ngIf="isDoctor() || isEmployee()">Requests</a>
+        <a mat-button routerLink="/admin" *ngIf="isAdmin()">Admin</a>
       </div>
     </mat-sidenav>
     <mat-sidenav-content fxFlexFill>

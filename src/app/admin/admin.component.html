@@ -1,17 +1,30 @@
 <mat-list>
-  <h3 mat-subheader>Users</h3>
-  <mat-list-item *ngFor="let user of users; last as last">
-    <mat-icon mat-list-icon>face</mat-icon>
-    <p>{{user.lastName}} {{user.firstname}}</p>
-    <p fxHide.lt-md="true">{{user.email}}</p>
-    <mat-form-field>
-      <mat-select placeholder="Role" [(ngModel)]="user.role" name="role">
-        <mat-option *ngFor="let role of roles" [value]="role">
-          {{role.toUpperCase()}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+  <h3 mat-subheader>Dcotors</h3>
+  <mat-list-item *ngFor="let doctor of doctors; last as last">
+    <mat-icon mat-list-icon>local_hospital</mat-icon>
+    <p>{{doctor.surname}} {{doctor.name}}</p>
+    <p fxHide.lt-md="true">{{doctor.email}}</p>
+    <mat-slide-toggle
+      class="example-margin"
+      [(ngModel)]="doctor.isActive"
+      [checked]="doctor.isActive"
+      (ngModelChange)="onChange($event, doctor)">
+      Is active
+    </mat-slide-toggle>
     <mat-divider *ngIf="!last"></mat-divider>
   </mat-list-item>
-  <button mat-raised-button (click)="updateRoles()">Submit</button>
+  <h3 mat-subheader>Employees</h3>
+  <mat-list-item *ngFor="let employee of employees; last as last">
+    <mat-icon mat-list-icon>local_pharmacy</mat-icon>
+    <p>{{employee.surname}} {{employee.name}}</p>
+    <p fxHide.lt-md="true">{{employee.email}}</p>
+    <mat-slide-toggle
+      class="example-margin"
+      [checked]="employee.isActive"
+      [(ngModel)]="employee.isActive"
+      (ngModelChange)="onChange($event, employee)">
+      Is active
+    </mat-slide-toggle>
+    <mat-divider *ngIf="!last"></mat-divider>
+  </mat-list-item>
 </mat-list>
