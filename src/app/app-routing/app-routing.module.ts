@@ -8,16 +8,19 @@ import { DonorProfileComponent } from '../donor-profile/donor-profile.component'
 import { DonationRequestComponent } from '../donation-request/donation-request.component';
 import { ViewRequestsComponent } from '../view-requests/view-requests.component';
 import { AdminComponent } from '../admin/admin.component';
+import { AuthGuard } from '../auth/auth-guard.service';
+import { InactiveAccountComponent } from '../inactive-account/inactive-account.component';
 
 const app_Routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
-  { path: 'donor-form', component: DonorFormComponent},
-  { path: 'donor-profile', component: DonorProfileComponent},
-  { path: 'donation-request', component: DonationRequestComponent},
-  { path: 'requests', component: ViewRequestsComponent},
-  { path: 'admin', component: AdminComponent},
+  { path: 'donor-form', component: DonorFormComponent, canActivate: [AuthGuard], data: {roles: ['donor']}},
+  { path: 'donor-profile', component: DonorProfileComponent, canActivate: [AuthGuard], data: {roles: ['donor']}},
+  { path: 'donation-request', component: DonationRequestComponent, canActivate: [AuthGuard], data: {roles: ['doctor']}},
+  { path: 'requests', component: ViewRequestsComponent, canActivate: [AuthGuard], data: {roles: ['donor', 'doctor', 'employee']}},
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard], data: {roles: ['admin']}},
+  { path: 'inactive-account', component: InactiveAccountComponent},
   { path: 'not-found', component: ErrorPageComponent},
   { path: '**', redirectTo: 'not-found' } // this should always be the last route!
   /* { path: '', redirectTo: '/somewhere-else', pathMatch: 'full' }
