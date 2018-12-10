@@ -2,11 +2,6 @@
     min-height: 80vh;
 }
 
-.header-image {
-    background-image: url('src/assets/profile_pic.jpg');
-    background-size: cover;
-}
-
 mat-card {
     color: #424242;
     background: #fff;
@@ -27,4 +22,8 @@ a {
 
 iframe {
     padding-top: 5vh;
+}
+
+mat-icon {
+    font-size: 40px;
 }

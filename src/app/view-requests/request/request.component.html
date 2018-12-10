@@ -1,21 +1,21 @@
 <mat-card class="card">
   <mat-card-header>
-    <div mat-card-avatar class="header-image"></div>
-    <!-- <mat-card-title>{{request.name}}</mat-card-title> -->
-    <mat-card-subtitle>{{request.center}}</mat-card-subtitle>
+    <mat-icon mat-card-avatar>account_box</mat-icon>
+    <mat-card-title>{{request.receivingPerson}}</mat-card-title>
+    <mat-card-subtitle>{{request.center.name}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <mat-accordion>
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <!-- <mat-progress-bar mode="determinate" value="{{request.quantity / request.totalQuantity * 100}}"></mat-progress-bar> -->
+            <mat-progress-bar mode="determinate" value="{{getSumQuantity() / request.quantity * 100}}"></mat-progress-bar>
           </mat-panel-title>
-          <!-- <mat-panel-description>{{request.quantity}}/{{request.totalQuantity}} l</mat-panel-description>           -->
+          <mat-panel-description>{{getSumQuantity()}}/{{request.quantity}} l</mat-panel-description>          
         </mat-expansion-panel-header>
         <div fxShow="true" fxHide.gt-sm="true">
           <div fxLayout="row" fxLayoutAlign="space-around">
-            <!-- <p class="align-left">Blood group: {{request.bloodGroup}}</p> -->
+            <p class="align-left">Blood group: {{request.bloodType}}</p>
             <p class="align-left">Rh: {{request.rh}}</p>
           </div>
           <div fxLayout="row" fxLayoutAlign="space-around">
@@ -26,12 +26,12 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <button mat-raised-button (click)="donate()" *ngIf="viewAs === 'employee'" class="donate-button" color="primary">Update</button>      
+            <button mat-raised-button (click)="update()" *ngIf="viewAs === 'employee'" class="donate-button" color="primary">Update</button>      
           </div>
         </div>
         <div fxShow="true" fxHide.lt-md="true">
           <div fxLayout="row" fxLayoutAlign="space-around">
-            <!-- <p class="align-left">Blood group: {{request.bloodGroup}}</p> -->
+            <p class="align-left">Blood group: {{request.bloodType}}</p>
             <p class="align-left">Rh: {{request.rh}}</p>
             <mat-form-field>
               <mat-select placeholder="Status:" [(ngModel)]="request.status" name="status" [disabled]="viewAs !== 'employee'">
@@ -48,17 +48,17 @@
             <h3 mat-subheader>Donors</h3>
             <button mat-raised-button (click)="addDonation()" *ngIf="viewAs === 'employee'" color="primary">Add donation</button>      
           </div>
-          <mat-list-item *ngFor="let donor of request.donors; last as last">
-            <p class="donor-list">{{donor.lastName}} {{donor.firstname}}</p>
-            <p fxHide.lt-md="true" class="donor-list">{{donor.email}}</p>
-            <p class="donor-list">{{donor.quantity}} l</p>
-            <p class="donor-list"><a target="_self" [href]="donor.bloodWork" [download]="donor.bloodWork">Blood work</a></p>
-            <mat-icon (click)="deleteDonation(donor)">close</mat-icon>
+          <mat-list-item *ngFor="let donation of request.donations; last as last">
+            <p class="donor-list">{{donation.donor.surname}} {{donation.donor.name}}</p>
+            <p fxHide.lt-md="true" class="donor-list">{{donation.donor.email}}</p>
+            <p class="donor-list">{{donation.quantity}} l</p>
+            <mat-icon (click)="deleteDonation(donation)">close</mat-icon>
             <mat-divider *ngIf="!last"></mat-divider>
           </mat-list-item>
         </mat-list>
       </mat-expansion-panel>
     </mat-accordion>
-    <button mat-raised-button (click)="donate()" *ngIf="viewAs === 'donor'" class="donate-button" color="primary">Donate</button>
+    <button mat-raised-button (click)="donate()" *ngIf="viewAs === 'donor' && !donationRegistered" class="donate-button" color="primary">Donate</button>
+    <button mat-raised-button (click)="remove()" *ngIf="viewAs === 'doctor'" class="donate-button" color="primary">Remove</button>
   </mat-card-content>
 </mat-card>

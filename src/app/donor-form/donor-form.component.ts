@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormArray, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-donor-form',
@@ -28,7 +29,7 @@ export class DonorFormComponent implements OnInit {
 
   donorForm: FormGroup;
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
     const questionsFormArray = new FormArray([]);
@@ -52,7 +53,11 @@ export class DonorFormComponent implements OnInit {
 
   onSubmit() {
     if (this.donorForm.valid) {
-      console.log('DONATE!');
+      localStorage.setItem('donation', 'true');
+      this._router.navigate(['requests']);
+    } else {
+      localStorage.setItem('donation', 'false');
+      this._router.navigate(['donor-profile']);
     }
   }
 

@@ -1,15 +1,15 @@
 <mat-card class="card">
-  <mat-card-header>
-    <div mat-card-avatar class="header-image"></div>
-    <mat-card-title>Vasile Emil</mat-card-title>
-    <mat-card-subtitle>Donor</mat-card-subtitle>
+  <mat-card-header *ngIf="donor">
+    <mat-icon mat-card-avatar>account_box</mat-icon>
+    <mat-card-title>{{donor.surname}} {{donor.name}}</mat-card-title>
+    <mat-card-subtitle>{{getDonationMessage()}}</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content>
-    <p class="align-left">Next donation date: 06.03.2018</p>
-    <p class="align-left">You donated for: Gica Dorel</p>
-    <p class="align-left">Status: Processing</p>
+  <mat-card-content *ngIf="donations">
+    <p class="align-left">Next donation date: {{getNextDonationDate() | date: 'dd/MM/yyyy'}}</p>
+    <p class="align-left" *ngIf="donations[0].request !== null">You donated for: {{donations[0].request.receivingPerson}}</p>
+    <p class="align-left" *ngIf="donations[0].request !== null">Status: {{donations[0].request.status}}</p>
     <p class="align-left">Blood works:</p>
-    <div *ngFor="let pdf of pdfs">
+    <div *ngFor="let donation of donations">
       <iframe  [src]="pdf | safeUrl" frameborder="0" height="500px" width="700px" fxHide.lt-md="true"></iframe>
       <p fxHide.gt-sm="true">{{pdf}}</p>
       <button mat-button color="primary" fxHide.gt-sm="true"><a target="_self" [href]="pdf" [download]="pdf">Download</a></button>

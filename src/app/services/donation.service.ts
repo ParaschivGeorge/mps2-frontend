@@ -11,7 +11,7 @@ export class DonationService {
 
   constructor(private _http: HttpClient) { }
 
-  createDonation(quantity: number, date: string, donorId: number, requestId: number, bloodTest: File): Observable<any> {
+  createDonation(quantity: number, date: string, donorId: number, requestId: number, bloodTest: any): Observable<any> {
 
     let queryParam = new HttpParams().set('quantity', quantity.toString());
     queryParam = queryParam.append('date', date);
@@ -33,7 +33,7 @@ export class DonationService {
     return this._http.request('put', environment.apiUrl + '/donation/' + donationId, {params : queryParam, body: bloodTest});
   }
 
-  getRequests(donorId: number, requestId: number): Observable<Donation[]> {
+  getDonations(donorId: number, requestId: number): Observable<Donation[]> {
     let queryParam = new HttpParams();
     if (donorId) {
       queryParam = queryParam.append('donorId', donorId.toString());

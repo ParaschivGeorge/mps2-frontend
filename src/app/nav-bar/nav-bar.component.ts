@@ -72,8 +72,23 @@ export class NavBarComponent implements OnInit {
     return user.role.toLowerCase() === 'admin';
   }
 
+  canDonate(): boolean {
+    if (this.canTakeDonationTest()) {
+      return false;
+    }
+    if (localStorage.getItem('donation') === 'true') {
+      return true;
+    }
+    return false;
+  }
+
+  canTakeDonationTest(): boolean {
+    return (localStorage.getItem('donation') === null);
+  }
+
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('donation');
     this._router.navigate(['/login']);
   }
 }
