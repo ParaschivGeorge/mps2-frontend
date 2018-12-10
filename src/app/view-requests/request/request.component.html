@@ -1,7 +1,7 @@
 <mat-card class="card">
   <mat-card-header>
     <div mat-card-avatar class="header-image"></div>
-    <mat-card-title>{{request.name}}</mat-card-title>
+    <!-- <mat-card-title>{{request.name}}</mat-card-title> -->
     <mat-card-subtitle>{{request.center}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
@@ -9,13 +9,13 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <mat-progress-bar mode="determinate" value="{{request.quantity / request.totalQuantity * 100}}"></mat-progress-bar>
+            <!-- <mat-progress-bar mode="determinate" value="{{request.quantity / request.totalQuantity * 100}}"></mat-progress-bar> -->
           </mat-panel-title>
-          <mat-panel-description>{{request.quantity}}/{{request.totalQuantity}} l</mat-panel-description>          
+          <!-- <mat-panel-description>{{request.quantity}}/{{request.totalQuantity}} l</mat-panel-description>           -->
         </mat-expansion-panel-header>
         <div fxShow="true" fxHide.gt-sm="true">
           <div fxLayout="row" fxLayoutAlign="space-around">
-            <p class="align-left">Blood group: {{request.bloodGroup}}</p>
+            <!-- <p class="align-left">Blood group: {{request.bloodGroup}}</p> -->
             <p class="align-left">Rh: {{request.rh}}</p>
           </div>
           <div fxLayout="row" fxLayoutAlign="space-around">
@@ -31,7 +31,7 @@
         </div>
         <div fxShow="true" fxHide.lt-md="true">
           <div fxLayout="row" fxLayoutAlign="space-around">
-            <p class="align-left">Blood group: {{request.bloodGroup}}</p>
+            <!-- <p class="align-left">Blood group: {{request.bloodGroup}}</p> -->
             <p class="align-left">Rh: {{request.rh}}</p>
             <mat-form-field>
               <mat-select placeholder="Status:" [(ngModel)]="request.status" name="status" [disabled]="viewAs !== 'employee'">
