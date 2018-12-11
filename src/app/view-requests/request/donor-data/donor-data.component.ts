@@ -8,6 +8,7 @@ import {ErrorStateMatcher} from '@angular/material/core';
 import { MatBottomSheetRef } from '@angular/material';
 import { formatDate } from '@angular/common';
 import { DonationService } from 'src/app/services/donation.service';
+import { Donor } from 'src/app/models/donor';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -30,7 +31,7 @@ export class DonorDataComponent implements OnInit {
     Validators.required,
     Validators.pattern('[0-1].[0-9]')
   ]);
-  filteredDonors: Observable<User[]>;
+  filteredDonors: Observable<Donor[]>;
   matcher = new MyErrorStateMatcher();
 
   constructor(
@@ -46,11 +47,11 @@ export class DonorDataComponent implements OnInit {
     );
   }
 
-  get donors(): User[] {
+  get donors(): Donor[] {
     return this._viewRequestHelperService.donors;
   }
 
-  private _filter(value: string): User[] {
+  private _filter(value: string): Donor[] {
     const filterValue = value.toLowerCase();
 
     return this.donors.filter(user => user.surname.toLowerCase().indexOf(filterValue) === 0);
@@ -67,11 +68,12 @@ export class DonorDataComponent implements OnInit {
 
   onSubmit() {
     if (this.donorForm.valid && this.quantityForm.valid) {
+      console.log(this.donors.filter(donor => donor.email === this.donorForm.value)[0].id_donor);
       this._donationService.createDonation(
         this.quantityForm.value,
         formatDate(this.date, 'dd/MM/yyyy', 'en-US'),
-        this.donorForm.value.id,
-        this._viewRequestHelperService.requests[this._viewRequestHelperService.index].id,
+        this.donors.filter(donor => donor.email === this.donorForm.value)[0].id_donor,
+        this._viewRequestHelperService.requests[this._viewRequestHelperService.index].idRequest,
         'aaa'
         ).subscribe(data => {
         console.log(data);

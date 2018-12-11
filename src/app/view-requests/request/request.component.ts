@@ -42,15 +42,16 @@ export class RequestComponent implements OnInit {
   }
 
   update() {
+    console.log('here');
     this._bloodRequestService.updateRequest(
-      this.request.id,
+      this.request.idRequest,
       this.request.status,
       this.request.receivingPerson,
       this.request.quantity,
-      this.request.doctor.id,
+      this.request.doctor.idDoctor,
       this.request.bloodType,
       this.request.rh,
-      this.request.center.id_center
+      this.request.transfusionCenter.idCenter
       ).subscribe(data => {
         console.log(data);
         window.location.reload();
@@ -63,7 +64,7 @@ export class RequestComponent implements OnInit {
   }
 
   deleteDonation(donation: Donation) {
-    this._donationService.deleteDonation(donation.id).subscribe(data => {
+    this._donationService.deleteDonation(donation.idDonation).subscribe(data => {
       console.log(data);
       window.location.reload();
     });
@@ -79,7 +80,7 @@ export class RequestComponent implements OnInit {
   }
 
   remove() {
-    this._bloodRequestService.deleteRequest(this.request.id).subscribe(data => {
+    this._bloodRequestService.deleteRequest(this.request.idRequest).subscribe(data => {
       console.log(data);
       window.location.reload();
     });

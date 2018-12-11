@@ -6,4 +6,5 @@ export interface Doctor extends User {
     isActive: boolean;
     hospital: Hospital;
     requests: BloodRequest[];
+    idDoctor: number;
 }

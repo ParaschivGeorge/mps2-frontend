@@ -60,6 +60,7 @@ export class DonationRequestComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log(this.donationForm.get('transfusionCenter').value);
     const user: User = jwt_decode(localStorage.getItem('token'))['user'];
     if (this.donationForm.valid) {
       this._bloodRequestService.createRequest(
@@ -68,7 +69,7 @@ export class DonationRequestComponent implements OnInit {
         user.id,
         this.donationForm.get('blood-group').value,
         this.donationForm.get('rh').value,
-        this.donationForm.get('transfusionCenter').value.id_center).subscribe(data => {
+        this.donationForm.get('transfusionCenter').value.idCenter).subscribe(data => {
           console.log(data);
           this._router.navigate(['requests']);
         });

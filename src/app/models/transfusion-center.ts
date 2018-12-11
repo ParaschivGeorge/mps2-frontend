@@ -2,7 +2,7 @@ import { BloodRequest } from './blood-request';
 import { Employee } from './employee';
 
 export interface TransfusionCenter {
-    id_center: number;
+    idCenter: number;
     name: string;
     employees: Employee[];
     requests: BloodRequest[];

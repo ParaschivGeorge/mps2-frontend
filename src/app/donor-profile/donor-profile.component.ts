@@ -26,7 +26,7 @@ export class DonorProfileComponent implements OnInit {
       this.donor = donor;
       this._donationService.getDonations(donor.id, null).subscribe(donations => {
         this.donations = donations.sort((a, b) =>
-          new Date(b.date).getTime() - new Date(a.date).getTime()
+          new Date(b.date).getDate() - new Date(a.date).getDate()
         );
         console.log(this.donations);
       });

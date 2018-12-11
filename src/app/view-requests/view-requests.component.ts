@@ -34,6 +34,7 @@ export class ViewRequestsComponent implements OnInit {
         this._bloodRequestService.getRequests(null, donor.bloodType, donor.rh, null).subscribe(
           requests => {
             this._viewRequestHelperService.requests = requests;
+            console.log(requests);
           }
         );
       });
@@ -42,19 +43,22 @@ export class ViewRequestsComponent implements OnInit {
         this._bloodRequestService.getRequests(doctor.id, null, null, null).subscribe(
           requests => {
             this._viewRequestHelperService.requests = requests;
+            console.log(requests);
           }
         );
       });
     } else if (user.role.toLowerCase() === 'employee') {
       this._employeeService.getEmployee(user.id).subscribe(employee => {
-        this._bloodRequestService.getRequests(null, null, null, employee.transfusionCenter).subscribe(
+        this._bloodRequestService.getRequests(null, null, null, employee.transfusionCenter.idCenter).subscribe(
           requests => {
             this._viewRequestHelperService.requests = requests;
+            console.log(requests);
           }
         );
       });
       this._donorService.getDonors(null, null).subscribe(donors => {
         this._viewRequestHelperService.donors = donors;
+        console.log(donors);
       });
     }
   }

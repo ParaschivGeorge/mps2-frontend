@@ -3,13 +3,13 @@ import { Doctor } from './doctor';
 import { Donation } from './donation';
 
 export interface BloodRequest {
-    id: number;
+    idRequest: number;
     status: string;
     bloodType: string;
     rh: string;
     quantity: number;
     receivingPerson: string;
-    center: TransfusionCenter;
+    transfusionCenter: TransfusionCenter;
     doctor: Doctor;
     donations: Donation[];
 }
