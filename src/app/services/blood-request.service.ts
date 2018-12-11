@@ -41,10 +41,10 @@ export class BloodRequestService {
   getRequests(doctorId: number, bloodType: string, rh: string, transfusionCenterId: number): Observable<BloodRequest[]> {
     let queryParam = new HttpParams();
     if (bloodType) {
-      queryParam = queryParam.append('bloodType', bloodType);
+      queryParam = queryParam.append('bloodType', bloodType.toLowerCase());
     }
     if (rh) {
-      queryParam = queryParam.append('rh', rh);
+      queryParam = queryParam.append('rh', rh.toLowerCase() === 'positive' ? 'Positive' : 'Negative');
     }
     if (doctorId) {
       queryParam = queryParam.append('idDoctor', doctorId.toString());

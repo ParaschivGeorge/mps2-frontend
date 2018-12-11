@@ -7,4 +7,5 @@ export interface Doctor extends User {
     hospital: Hospital;
     requests: BloodRequest[];
     idDoctor: number;
+    id_doctor: number;
 }

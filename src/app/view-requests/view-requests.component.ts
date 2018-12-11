@@ -31,7 +31,7 @@ export class ViewRequestsComponent implements OnInit {
     this._viewRequestHelperService.viewAs = user.role.toLowerCase();
     if (user.role.toLowerCase() === 'donor') {
       this._donorService.getDonor(user.id).subscribe(donor => {
-        this._bloodRequestService.getRequests(null, donor.bloodType, donor.rh, null).subscribe(
+        this._bloodRequestService.getRequests(null, donor.blood_type, donor.Rh, null).subscribe(
           requests => {
             this._viewRequestHelperService.requests = requests;
             console.log(requests);
@@ -40,7 +40,8 @@ export class ViewRequestsComponent implements OnInit {
       });
     } else if (user.role.toLowerCase() === 'doctor') {
       this._doctorService.getDoctor(user.id).subscribe(doctor => {
-        this._bloodRequestService.getRequests(doctor.id, null, null, null).subscribe(
+        console.log(doctor.id_doctor);
+        this._bloodRequestService.getRequests(doctor.id_doctor, null, null, null).subscribe(
           requests => {
             this._viewRequestHelperService.requests = requests;
             console.log(requests);
@@ -49,7 +50,7 @@ export class ViewRequestsComponent implements OnInit {
       });
     } else if (user.role.toLowerCase() === 'employee') {
       this._employeeService.getEmployee(user.id).subscribe(employee => {
-        this._bloodRequestService.getRequests(null, null, null, employee.transfusionCenter.idCenter).subscribe(
+        this._bloodRequestService.getRequests(null, null, null, employee.transfusionCenter).subscribe(
           requests => {
             this._viewRequestHelperService.requests = requests;
             console.log(requests);
