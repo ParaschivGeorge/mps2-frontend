@@ -31,11 +31,11 @@ import {
   MatTableModule,
   MatSortModule,
   MatPaginatorModule,
-  MatBottomSheetModule
+  MatBottomSheetModule,
+  MatNativeDateModule
 } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { DonorDataComponent } from '../view-requests/request/donor-data/donor-data.component';
 
 @NgModule({
   imports: [
@@ -72,7 +72,8 @@ import { DonorDataComponent } from '../view-requests/request/donor-data/donor-da
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatNativeDateModule
   ],
   exports: [
     BrowserModule,
@@ -108,7 +109,8 @@ import { DonorDataComponent } from '../view-requests/request/donor-data/donor-da
     MatTableModule,
     MatSortModule,
     MatPaginatorModule,
-    MatBottomSheetModule
+    MatBottomSheetModule,
+    MatNativeDateModule
   ]
 })
 export class MaterialModule { }

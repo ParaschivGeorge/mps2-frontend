@@ -2,8 +2,8 @@
     <mat-form-field class="full-width" >
       <input type="text" placeholder="Donor" aria-label="Number" matInput [formControl]="donorForm" [matAutocomplete]="auto" [errorStateMatcher]="matcher">
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let user of filteredDonors | async" [value]="user.email">
-          {{user.lastName}} {{user.firstname}} {{user.email}}
+        <mat-option *ngFor="let donor of filteredDonors | async" [value]="donor.email">
+          {{donor.surname}} {{donor.name}} {{donor.email}}
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
@@ -17,6 +17,11 @@
         <mat-icon>attachment</mat-icon>
       </button>
       <input hidden type="file" #imgFileInput (change)="previewImage($event)"/>
-    </div>
+    </div>    
+    <mat-form-field>
+      <input  [(ngModel)]="date" matInput [matDatepicker]="picker" placeholder="Donation date" name="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
     <button mat-raised-button (click)="onSubmit()" color="primary">Add donation</button>
   </form>

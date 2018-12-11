@@ -4,6 +4,10 @@ import {MatBottomSheet, MatBottomSheetRef} from '@angular/material';
 import { DonorDataComponent } from './donor-data/donor-data.component';
 import { ViewRequestHelperService } from 'src/app/services/view-request-helper.service';
 import { Donor } from 'src/app/models/donor';
+import { Router } from '@angular/router';
+import { BloodRequestService } from 'src/app/services/blood-request.service';
+import { Donation } from 'src/app/models/donation';
+import { DonationService } from 'src/app/services/donation.service';
 
 @Component({
   selector: 'app-request',
@@ -20,18 +24,38 @@ export class RequestComponent implements OnInit {
 
   constructor(
     private _bottomSheet: MatBottomSheet,
-    private _viewRequestHelperService: ViewRequestHelperService
+    private _viewRequestHelperService: ViewRequestHelperService,
+    private _router: Router,
+    private _bloodRequestService: BloodRequestService,
+    private _donationService: DonationService
     ) { }
 
   ngOnInit() {
   }
 
   donate() {
-    console.log('nu e backend ba saracilor!');
+    this._viewRequestHelperService.donationRegistered = true;
+  }
+
+  get donationRegistered() {
+    return this._viewRequestHelperService.donationRegistered;
   }
 
   update() {
-    console.log('nu e backend ba saracilor!');
+    console.log('here');
+    this._bloodRequestService.updateRequest(
+      this.request.idRequest,
+      this.request.status,
+      this.request.receivingPerson,
+      this.request.quantity,
+      this.request.doctor.idDoctor,
+      this.request.bloodType,
+      this.request.rh,
+      this.request.transfusionCenter.idCenter
+      ).subscribe(data => {
+        console.log(data);
+        window.location.reload();
+      });
   }
 
   addDonation() {
@@ -39,7 +63,26 @@ export class RequestComponent implements OnInit {
     this._bottomSheet.open(DonorDataComponent);
   }
 
-  deleteDonation(donor: Donor) {
-    // this.request.donors = this.request.donors.filter(donor1 => donor1 !== donor);
+  deleteDonation(donation: Donation) {
+    this._donationService.deleteDonation(donation.idDonation).subscribe(data => {
+      console.log(data);
+      window.location.reload();
+    });
+  }
+
+  getSumQuantity() {
+    let sumQuantity = 0;
+    this.request.donations.forEach(donation => {
+      sumQuantity += donation.quantity;
+    });
+
+    return sumQuantity;
+  }
+
+  remove() {
+    this._bloodRequestService.deleteRequest(this.request.idRequest).subscribe(data => {
+      console.log(data);
+      window.location.reload();
+    });
   }
 }

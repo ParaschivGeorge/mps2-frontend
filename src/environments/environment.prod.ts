@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://35.188.36.73'
+  apiUrl: 'https://mpsproject.dynssl.com'
 };

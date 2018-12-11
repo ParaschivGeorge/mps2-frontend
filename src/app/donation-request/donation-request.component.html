@@ -20,8 +20,15 @@
     </mat-form-field>
     <mat-form-field class="full-width">
       <input matInput placeholder="Quantity" formControlName="quantity"
-        [errorStateMatcher]="matcher" type="number" min="1">
+        [errorStateMatcher]="matcher">
     </mat-form-field>
-    <button mat-raised-button type="submit" color="primary">Request blood</button>
+    <mat-form-field class="full-width">
+      <mat-select placeholder="Transfusion Center" formControlName="transfusionCenter" name="transfusionCenter">
+        <mat-option *ngFor="let transfusionCenter of transfusionCenters" [value]="transfusionCenter">
+          {{transfusionCenter.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button type="submit" color="primary">Add request</button>
   </form>
 </div>

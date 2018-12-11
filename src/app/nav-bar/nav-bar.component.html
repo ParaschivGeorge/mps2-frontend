@@ -13,10 +13,10 @@
     <div fxShow="true" fxHide.lt-md="true">
       <a mat-button routerLink="/login" *ngIf="!isAuthenticated()">Login</a>
       <a mat-button routerLink="/register" *ngIf="!isAuthenticated()">Register</a>
-      <a mat-button routerLink="/donor-form" *ngIf="isDonor()">Donor Form</a>
+      <a mat-button routerLink="/donor-form" *ngIf="isDonor() && canTakeDonationTest()">Donation test</a>
       <a mat-button routerLink="/donor-profile" *ngIf="isDonor()">Profile</a>
       <a mat-button routerLink="/donation-request" *ngIf="isDoctor()">Request</a>
-      <a mat-button routerLink="/requests" *ngIf="isDoctor() || isEmployee()">Requests</a>
+      <a mat-button routerLink="/requests" *ngIf="isDoctor() || isEmployee() || (isDonor() && canDonate())">Requests</a>
       <a mat-button routerLink="/admin" *ngIf="isAdmin()">Admin</a>
       <button mat-raised-button *ngIf="isAuthenticated()" (click)="logout()">Logout</button>
     </div>
@@ -27,7 +27,7 @@
       <div fxLayout="column">
         <a mat-button routerLink="/login" *ngIf="!isAuthenticated()">Login</a>
         <a mat-button routerLink="/register" *ngIf="!isAuthenticated()">Register</a>
-        <a mat-button routerLink="/donor-form" *ngIf="isDonor()">Donor Form</a>
+        <a mat-button routerLink="/donor-form" *ngIf="isDonor()">Donation test</a>
         <a mat-button routerLink="/donor-profile" *ngIf="isDonor()">Profile</a>
         <a mat-button routerLink="/donation-request" *ngIf="isDoctor()">Request</a>
         <a mat-button routerLink="/requests" *ngIf="isDoctor() || isEmployee()">Requests</a>

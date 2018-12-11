@@ -6,6 +6,9 @@ import { User } from 'src/app/models/user';
 import {FormControl, FormGroupDirective, NgForm, Validators, FormGroup} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { MatBottomSheetRef } from '@angular/material';
+import { formatDate } from '@angular/common';
+import { DonationService } from 'src/app/services/donation.service';
+import { Donor } from 'src/app/models/donor';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -22,17 +25,19 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class DonorDataComponent implements OnInit {
 
+  date = new Date();
   donorForm = new FormControl(null, [Validators.required, this.donorValidator.bind(this)]);
-  quantityForm = new FormControl('0.5', [
+  quantityForm = new FormControl('0.4', [
     Validators.required,
     Validators.pattern('[0-1].[0-9]')
   ]);
-  filteredDonors: Observable<User[]>;
+  filteredDonors: Observable<Donor[]>;
   matcher = new MyErrorStateMatcher();
 
   constructor(
     private _viewRequestHelperService: ViewRequestHelperService,
-    private bottomSheetRef: MatBottomSheetRef<DonorDataComponent>
+    private bottomSheetRef: MatBottomSheetRef<DonorDataComponent>,
+    private _donationService: DonationService
   ) { }
 
   ngOnInit() {
@@ -42,18 +47,18 @@ export class DonorDataComponent implements OnInit {
     );
   }
 
-  get users(): User[] {
-    return this._viewRequestHelperService.users;
+  get donors(): Donor[] {
+    return this._viewRequestHelperService.donors;
   }
 
-  private _filter(value: string): User[] {
+  private _filter(value: string): Donor[] {
     const filterValue = value.toLowerCase();
 
-    return this.users.filter(user => user.surname.toLowerCase().indexOf(filterValue) === 0);
+    return this.donors.filter(user => user.surname.toLowerCase().indexOf(filterValue) === 0);
   }
 
   donorValidator(control: FormControl): {[s: string]: boolean} {
-    if (this.users.filter(user => user.email === control.value).length > 0) {return null; }
+    if (this.donors.filter(user => user.email === control.value).length > 0) {return null; }
     return {'invalidDonor': true};
   }
 
@@ -63,17 +68,18 @@ export class DonorDataComponent implements OnInit {
 
   onSubmit() {
     if (this.donorForm.valid && this.quantityForm.valid) {
-      const donor: User = this.users.filter(user => user.email === this.donorForm.value)[0];
-      // this._viewRequestHelperService.requests[this._viewRequestHelperService.index].donors.push(
-      //   {
-      //     email: donor.email,
-      //     firstname: donor.firstname,
-      //     lastName: donor.lastName,
-      //     quantity: this.quantityForm.value,
-      //     bloodWork: '../../assets/blood_work.pdf'
-      //   }
-      // );
-      this.bottomSheetRef.dismiss();
+      console.log(this.donors.filter(donor => donor.email === this.donorForm.value)[0].id_donor);
+      this._donationService.createDonation(
+        this.quantityForm.value,
+        formatDate(this.date, 'dd/MM/yyyy', 'en-US'),
+        this.donors.filter(donor => donor.email === this.donorForm.value)[0].id_donor,
+        this._viewRequestHelperService.requests[this._viewRequestHelperService.index].idRequest,
+        'aaa'
+        ).subscribe(data => {
+        console.log(data);
+        this.bottomSheetRef.dismiss();
+        window.location.reload();
+      });
     }
   }
 }

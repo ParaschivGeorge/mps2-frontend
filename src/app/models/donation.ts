@@ -2,7 +2,7 @@ import { Donor } from './donor';
 import { BloodRequest } from './blood-request';
 
 export interface Donation {
-    id: number;
+    idDonation: number;
     bloodTest: File;
     date: string;
     quantity: number;

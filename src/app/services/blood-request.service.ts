@@ -21,7 +21,7 @@ export class BloodRequestService {
     queryParam = queryParam.append('bloodType', bloodType);
     queryParam = queryParam.append('rh', rh);
 
-    return this._http.request('post', environment.apiUrl + '/request', {params : queryParam});
+    return this._http.request('post', environment.apiUrl + '/bloodRequest', {params : queryParam});
   }
 
   updateRequest(requestId: number, status: string, receivingPerson: string, quantity: number,
@@ -35,7 +35,7 @@ export class BloodRequestService {
     queryParam = queryParam.append('rh', rh);
     queryParam = queryParam.append('status', status);
 
-    return this._http.request('put', environment.apiUrl + '/request/' + requestId, {params : queryParam});
+    return this._http.request('put', environment.apiUrl + '/bloodRequest/' + requestId, {params : queryParam});
   }
 
   getRequests(doctorId: number, bloodType: string, rh: string, transfusionCenterId: number): Observable<BloodRequest[]> {
@@ -53,14 +53,14 @@ export class BloodRequestService {
       queryParam = queryParam.append('transfusionCenterId', transfusionCenterId.toString());
     }
 
-    return this._http.get<BloodRequest[]>(environment.apiUrl + '/request', {params : queryParam});
+    return this._http.get<BloodRequest[]>(environment.apiUrl + '/bloodRequest', {params : queryParam});
   }
 
   getRequest(requestId: number): Observable<BloodRequest> {
-    return this._http.get<BloodRequest>(environment.apiUrl + '/request/' + requestId);
+    return this._http.get<BloodRequest>(environment.apiUrl + '/bloodRequest/' + requestId);
   }
 
   deleteRequest(requestId: number): Observable<any> {
-    return this._http.delete<any>(environment.apiUrl + '/request/' + requestId);
+    return this._http.delete<any>(environment.apiUrl + '/bloodRequest/' + requestId);
   }
 }
