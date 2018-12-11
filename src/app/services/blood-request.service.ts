@@ -47,10 +47,10 @@ export class BloodRequestService {
       queryParam = queryParam.append('rh', rh);
     }
     if (doctorId) {
-      queryParam = queryParam.append('hospitalId', doctorId.toString());
+      queryParam = queryParam.append('idDoctor', doctorId.toString());
     }
     if (transfusionCenterId) {
-      queryParam = queryParam.append('transfusionCenterId', transfusionCenterId.toString());
+      queryParam = queryParam.append('idCenter', transfusionCenterId.toString());
     }
 
     return this._http.get<BloodRequest[]>(environment.apiUrl + '/bloodRequest', {params : queryParam});
