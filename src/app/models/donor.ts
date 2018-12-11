@@ -7,4 +7,6 @@ export interface Donor extends User {
     donations: Donation[];
     idDonor: number;
     id_donor: number;
+    blood_type: string;
+    Rh: string;
 }

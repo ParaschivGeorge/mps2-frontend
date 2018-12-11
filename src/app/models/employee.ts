@@ -4,6 +4,6 @@ import { TransfusionCenter } from './transfusion-center';
 export interface Employee extends User {
     isActive: boolean;
     center: TransfusionCenter;
-    transfusionCenter: TransfusionCenter;
+    transfusionCenter: number;
     idEmployee: number;
 }
