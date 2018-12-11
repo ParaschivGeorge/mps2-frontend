@@ -36,10 +36,10 @@ export class DonationService {
   getDonations(donorId: number, requestId: number): Observable<Donation[]> {
     let queryParam = new HttpParams();
     if (donorId) {
-      queryParam = queryParam.append('donorId', donorId.toString());
+      queryParam = queryParam.append('idDonor', donorId.toString());
     }
     if (requestId) {
-      queryParam = queryParam.append('requestId', requestId.toString());
+      queryParam = queryParam.append('idRequest', requestId.toString());
     }
 
     return this._http.get<Donation[]>(environment.apiUrl + '/donation', {params : queryParam});
